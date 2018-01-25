@@ -28,6 +28,22 @@ class LinkedList {
     }
   }
 
+  //'Boomer'
+  //add a check for no value found
+  insertBefore(locationValue, newValue) {
+    if (!this.head) {
+      this.insertFirst(newValue);
+    } else {
+      let currNode = this.head;
+      //we are comparing the location value (ITS THE KEY!) in the node
+      while(currNode !== null && currNode.next.value !== locationValue) {
+        console.log('Inside the loop and before assignment', currNode.next);
+        currNode = currNode.next;
+      }
+      currNode.next = new _Node(newValue, currNode.next);
+    }
+  }
+
 //   insertAt(node, location){
 //     if(this.head === null) {
 //       this.insertFirst(node);
@@ -50,7 +66,20 @@ class LinkedList {
 
 function main(){
 
+  let sll = new LinkedList();
+  sll.insertFirst('Apollo');
+  sll.insertLast('Boomer');
+  sll.insertLast('Helo');
+  sll.insertLast('Husker');
+  sll.insertLast('Starbuck');
+  sll.insertFirst('Tauhida');
+  sll.insertBefore('Boomer', 'nicci');
+
+
+
+  console.log(JSON.stringify(sll, null, 3));
+
 }
 
-main();
 
+main();

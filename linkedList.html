@@ -30,6 +30,18 @@ class LinkedList {
     }
   }
 
+  insertBefore(locationValue, newValue) {
+    if (!this.head) {
+      this.insertFirst(newValue);
+    } else {
+      let currNode = this.head;
+      while((currNode !== null) && (currNode.next !== locationValue)) {
+        currNode = currNode.next;
+      }
+      currNode.next = new Node(newValue, currNode.next);
+    }
+  }
+
   find(value) {
       let currNode = this.head;
 
@@ -103,6 +115,11 @@ function main(){
     sll.insertLast('Helo');
     sll.insertLast('Husker');
     sll.insertLast('Starbuck');
+    sll.insertFirst('Tauhida');
+    sll.insertBefore('boomer', 'nicci')
+    sll.remove('squirrel')
+    sll.find('kayla')
+
 }
 
 main();
