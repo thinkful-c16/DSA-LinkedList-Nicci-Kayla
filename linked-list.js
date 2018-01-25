@@ -59,22 +59,47 @@ class LinkedList {
     }
   }
 
-//   insertAt(node, location){
-//     if(this.head === null) {
-//       this.insertFirst(node);
-//     } else {
-//       let tempNode = this.head;
-//       while(tempNode.next !== null && tempNode.value !== node.next.value) {     
-//         tempNode = tempNode.next;
-//       }                                      
-//       while(E.next !== null && E.value !== 'E') {     
-//         tempNode = tempNode.next;
-//       }
+  insertAt(value, nPosition){
+    if(this.head === null) {
+      this.insertFirst(value);
+    } else {
+      let currNode = this.head;
+      let nodeCount = 1;
+      while((currNode !== null) && (nodeCount !== nPosition - 1)) {
+        currNode = currNode.next;
+        nodeCount++;
+      }
+      currNode.next = new _Node(value, currNode.next);
+    }
+  }
 
-//       tempNode.next = new _Node(node, tempNode.next);
+  remove(value) {
+    if(!this.head) {
+      return null;
+    }
 
-//     }
-//   }
+    console.log('head', this.head);
+    console.log('value', value);
+    if(this.head.value === value) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let currNode = this.head;
+    let prevNode = this.head;
+
+    while((currNode !== null) && (currNode.value !== value)){
+      prevNode = currNode;
+      currNode = currNode.next;
+    }
+
+    if(currNode === null) {
+      console.log('Value not found');
+      return; 
+    }
+
+    prevNode.next = currNode.next;
+  }
 
 
 }
@@ -88,8 +113,12 @@ function main(){
   sll.insertLast('Husker');
   sll.insertLast('Starbuck');
   sll.insertFirst('Tauhida');
-  sll.insertBefore('Boomer', 'nicci');
-  sll.insertAfter('Apollo', 'kw');
+  sll.insertBefore('Boomer', 'Athena');
+  sll.insertAfter('Helo', 'Hotdog');
+  sll.insertAt('Kat', 3);
+  sll.remove('Tauhida');
+
+  
 
 
 
