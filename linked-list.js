@@ -37,10 +37,25 @@ class LinkedList {
       let currNode = this.head;
       //we are comparing the location value (ITS THE KEY!) in the node
       while(currNode !== null && currNode.next.value !== locationValue) {
-        console.log('Inside the loop and before assignment', currNode.next);
+        // console.log('Inside the loop and before assignment', currNode.next);
         currNode = currNode.next;
       }
       currNode.next = new _Node(newValue, currNode.next);
+    }
+  }
+
+  insertAfter(locationValue, newValue) {
+    if (!this.head) {
+      this.insertFirst(newValue);
+    } else {
+      let currNode = this.head;
+      while(currNode !== null && currNode.value !== locationValue) {
+        currNode = currNode.next;
+      }
+      currNode.next = new _Node(newValue, currNode.next);
+    //set the new next's pointer to nicci
+    //apollo's next pointer to new node
+
     }
   }
 
@@ -74,6 +89,7 @@ function main(){
   sll.insertLast('Starbuck');
   sll.insertFirst('Tauhida');
   sll.insertBefore('Boomer', 'nicci');
+  sll.insertAfter('Apollo', 'kw');
 
 
 
