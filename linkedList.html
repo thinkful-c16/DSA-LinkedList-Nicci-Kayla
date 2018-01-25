@@ -1,3 +1,5 @@
+<script>
+
 'use strict';
 class _Node {
   constructor(value, next) {
@@ -28,6 +30,45 @@ class LinkedList {
     }
   }
 
+  find(node) {
+      let currNode = this.head;
+
+      if(!this.head) {
+          return null;
+      }
+
+      while(currNode.value !== node) {
+        if(currNode.next === null) {
+            return 'Node not found';
+        } else {
+            currNode = currNode.next;
+        }
+      }
+
+      return currNode;
+  }
+
+  removal(node) {
+      if(!this.head) {
+          return null;
+      }
+
+      if(this.head === node) {
+          this.head = this.head.next;
+          return;
+      }
+
+      let currNode = this.head;
+      let prevNode = this.head;
+
+      while((currNode !== null) && (currNode.value !== node)){
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+  }
+
+
+
 //   insertAt(node, location){
 //     if(this.head === null) {
 //       this.insertFirst(node);
@@ -49,8 +90,11 @@ class LinkedList {
 }
 
 function main(){
-
+    let ssl = new LinkedList();
+    ssl.insertFirst('Apollo');
 }
 
 main();
+
+</script>
 
