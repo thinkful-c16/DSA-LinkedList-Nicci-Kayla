@@ -1,6 +1,6 @@
 <script>
-
 'use strict';
+
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -30,16 +30,16 @@ class LinkedList {
     }
   }
 
-  find(node) {
+  find(value) {
       let currNode = this.head;
 
       if(!this.head) {
           return null;
       }
 
-      while(currNode.value !== node) {
+      while(currNode.value !== value) {
         if(currNode.next === null) {
-            return 'Node not found';
+            return 'Value not found';
         } else {
             currNode = currNode.next;
         }
@@ -48,12 +48,12 @@ class LinkedList {
       return currNode;
   }
 
-  removal(node) {
+  remove(value) {
       if(!this.head) {
           return null;
       }
 
-      if(this.head === node) {
+      if(this.head === value) {
           this.head = this.head.next;
           return;
       }
@@ -61,15 +61,22 @@ class LinkedList {
       let currNode = this.head;
       let prevNode = this.head;
 
-      while((currNode !== null) && (currNode.value !== node)){
+      while((currNode !== null) && (currNode.value !== value)){
         prevNode = currNode;
         currNode = currNode.next;
       }
+
+      if(currNode === null) {
+        console.log('Value not found');
+        return; 
+      }
+
+      prevNode.next = currNode.next;
   }
 
 
 
-//   insertAt(node, location){
+//   insertAt(node, position){
 //     if(this.head === null) {
 //       this.insertFirst(node);
 //     } else {
@@ -90,8 +97,12 @@ class LinkedList {
 }
 
 function main(){
-    let ssl = new LinkedList();
-    ssl.insertFirst('Apollo');
+    let sll = new LinkedList();
+    sll.insertFirst('Apollo');
+    sll.insertLast('Boomer');
+    sll.insertLast('Helo');
+    sll.insertLast('Husker');
+    sll.insertLast('Starbuck');
 }
 
 main();
