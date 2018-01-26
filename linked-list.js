@@ -123,11 +123,16 @@ function main(){
   //Supplemental functions
 
   const displayList = list => {
-    return JSON.stringify(list, null, 2);
+    // return JSON.stringify(list, null, 2);
+    let node = list.head;
+    while (node !== null) {
+      console.log(node.value);
+      node = node.next;
+    }
 
   };
 
-  console.log(displayList(sll));
+  displayList(sll);
 
   const listSize = list => {
     let count = 0;
@@ -149,6 +154,10 @@ function main(){
   };
 
   console.log(isEmpty(sll));
+
+  const findPrevious = list => {
+
+  }
 
 
   
