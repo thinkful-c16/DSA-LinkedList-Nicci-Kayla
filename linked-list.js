@@ -107,6 +107,7 @@ class LinkedList {
 function main(){
 
   let sll = new LinkedList();
+
   sll.insertFirst('Apollo');
   sll.insertLast('Boomer');
   sll.insertLast('Helo');
@@ -118,11 +119,42 @@ function main(){
   sll.insertAt('Kat', 3);
   sll.remove('Tauhida');
 
+
+  //Supplemental functions
+
+  const displayList = list => {
+    return JSON.stringify(list, null, 2);
+
+  };
+
+  console.log(displayList(sll));
+
+  const listSize = list => {
+    let count = 0;
+    let currNode = list.head;
+
+    while(currNode !== null) {
+      currNode = currNode.next;
+      count++;
+    }
+    return count;
+
+
+  };
+
+  console.log(listSize(sll));
+
+  const isEmpty = list => {
+    return list.head ? false : true;
+  };
+
+  console.log(isEmpty(sll));
+
+
   
 
 
 
-  console.log(JSON.stringify(sll, null, 3));
 
 }
 
